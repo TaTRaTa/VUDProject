@@ -1,0 +1,110 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 1rem;
+}
+
+.clr {
+	clear: both;
+}
+
+#general-container {
+	position: relative;
+	background-image: url(../images/blood-drop/blood_01.jpg);
+	background-color: tomato;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+    height: 100vh;
+	box-sizing: border-box;
+	display : grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: 2% 10% 5% repeat(5, 1fr) 5% 5%;
+}
+
+#top-banner {
+	display : none;
+	grid-row: 1 / span 1;
+	grid-column: 1 / last-line;
+	background-color: yellow;
+}
+
+#nav {
+	
+	opacity:0.7;
+	grid-row: 1 / span 2;
+	grid-column: 1 / last-line;
+	background-color: #bb1a25;
+}
+
+#head-banner {
+	display : none;
+	grid-row: 3 / span 1;
+	grid-column: 1 / last-line;
+	background-color: yellow;
+}
+
+#content{
+	position : relative;
+	background-color: white;
+	opacity:0.7;
+	box-shadow: 12px 12px 24px 2px rgba(0,0,0,0.75);
+	color:#8C1500;
+	text-align: center;
+	grid-row: 4 / span 5;
+	grid-column: 2 / span 6;
+}
+
+#aside{
+	color:#8C1500;
+	text-align: center;
+	opacity:0.5;
+	grid-row: 4 / span 4;
+	grid-column: 9 / span 3;
+	background-color: #007bff;
+	box-shadow: 12px 12px 24px 1px rgba(0,0,0,0.75);
+}
+
+#footer{
+
+	bottom:0.05em;
+	background-color: black;
+	color: white;	
+	text-align: center;
+	opacity:0.8;
+	grid-row: 10 / span 1;
+	grid-column: 1 / last-line;
+}
+
+#temp{
+	position : relative;
+	height :80%;
+	background-color: tomato;
+
+}
+
+@media screen and (max-width: 770px) {
+	#aside{
+	color:#8C1500;
+	text-align: center;
+	opacity:0.5;
+	grid-row: 4 / span 1;
+	grid-column: 2/ span 10;
+	background-color: #007bff;
+	box-shadow: 12px 12px 24px 1px rgba(0,0,0,0.75);
+	}
+	
+	#content{
+		background-color: white;
+		opacity:0.7;
+		box-shadow: 12px 12px 24px 2px rgba(0,0,0,0.75);
+		color:#8C1500;
+		text-align: center;
+		grid-row: 6 / span 3;
+		grid-column: 2 / span 10;
+	}
+	
+
+}

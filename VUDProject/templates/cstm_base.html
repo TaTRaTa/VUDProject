@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+
+{% block title %}
+	<title>Page Title</title>
+{% endblock %}
+
+{% block head %}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="{% static 'base/css/bootstrap.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'base/css/styles.css' %}">
+		
+		<!-- JS -->
+		<script type="text/javascript" language="Javascript" src="{% static 'base/js/jquery-3.4.1.min.js' %}"></script> 
+		<script type="text/javascript" language="Javascript" src="{% static 'base/js/bootstrap.bundle.min.js' %}"></script> 
+		
+	</head>
+{% endblock %}
+
+<body>
+
+{% block body %}
+<div id="general-container">
+
+
+	{% block top-banner_css %}
+		<div id="top-banner">
+			{% block top-banner %}
+			{% endblock %}
+		</div>
+	{% endblock %}
+	
+	{% block nav_css %}
+		<div id="nav">
+			{% block nav %}
+				<a class="" href="#"> Fixed navbar </a>		
+			{% endblock %}
+		</div>
+	{% endblock %}
+	
+	<div id="head-banner">
+		{% block head-banner %}		
+		{% endblock %}
+	</div>
+	
+	{% block content_css %}
+		<div id="content">
+			{% block content%}									
+					<p> inner-container </p>
+					{% block test %}
+					<div id="temp">	
+						<h1> yes </h1>
+					</div>
+					{% endblock %}
+					
+			{% endblock %}
+		</div>
+	{% endblock %}
+	
+	{% block aside_css %}
+		<div id="aside">	
+			{% block aside %}			
+					<p> aside </p>			
+			{% endblock %}
+		</div>
+	{% endblock %}
+	
+	{% block footer_css %}
+		<div id="footer">
+			{% block footer %}
+				 <!-- Copyright -->
+				  <div class=" footer-copyright">© 2020 Copyright:
+					<a href="#"> vudproject.com</a>
+				  </div>
+			{% endblock %}
+		</div>
+	{% endblock %}
+
+</div>
+{% endblock %}
+
+</body>
+
+</html>
