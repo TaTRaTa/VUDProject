@@ -5,5 +5,5 @@ from . import views
 app_name = 'vud'
 
 urlpatterns = [
-    path('', views.Home , name="home"),
+    path('', views.HomeView.as_view() , name="home"),
 ]
