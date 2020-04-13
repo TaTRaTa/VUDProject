@@ -1,0 +1,17 @@
+table {
+  font-family: Verdana;
+  font-size: 1.2vw;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 10px;
+  text-align: left;
+  margin: 0;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+

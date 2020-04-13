@@ -14,9 +14,13 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'base/css/bootstrap.min.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'base/css/styles.css' %}">
 		
+		{% block extra_head_css %}{% endblock %}
+		
 		<!-- JS -->
 		<script type="text/javascript" language="Javascript" src="{% static 'base/js/jquery-3.4.1.min.js' %}"></script> 
 		<script type="text/javascript" language="Javascript" src="{% static 'base/js/bootstrap.bundle.min.js' %}"></script> 
+		
+		{% block extra_head_js %}{% endblock %}
 		
 	</head>
 {% endblock %}
@@ -24,78 +28,53 @@
 <body>
 
 {% block body %}
-<div id="general-container">
-
-
-	{% block top-banner_css %}
-		<div id="top-banner">
-			{% block top-banner %}
-			{% endblock %}
-		</div>
-	{% endblock %}
+<div class="bckgrnd">
 	
-	{% block nav-bckgrnd %}
-		<div class="nav-bckgrnd">
-		</div>
-	{% endblock %}
-	
-	{% block brand-logo%}
-		<div class="brand-logo">logo</div>
-	{% endblock %}
-	
-	{% block nav-right-side%}
-		<div class="nav-right-side"><h4><strong>Donate</strong><br> Save life</h4></div>
-	{% endblock %}
-	
-	{% block nav %}
-		<div class="nav">
-			<a href="#home"> Home </a>
-
-			<a href="#news"> News </a>
-
-			<a href="#contact"> Contact </a>
-
-			<a href="#about"> About</a>	
-		</div>
-	{% endblock %}
-	
-	<div id="head-banner">
-		{% block head-banner %}		
+	<header>		
+		{% block header_logo %}
+			<div class="header_logo"><h4><strong>Donate</strong><br> Save life</h4></div>
 		{% endblock %}
+		
+		
+		<nav>
+			<ul>			
+			{% block nav %}
+				<li><a href="{% url 'vud:home' %}"> Home </a></li>
+
+				<li><a href="#news"> News </a></li>
+
+				<li><a href="#contact"> Contact </a></li>
+
+				<li><a href="#about"> About</a></li>
+			{% endblock %}	
+			</ul>
+		</nav>
+		
+
+		{% block header_login%}
+			<div class="header_login"><a href="#login"> Login </a></div>
+		{% endblock %}
+	</header>
+
+	<div class="main_container">
+
+		{% block content%}									
+				
+		{% endblock %}
+
 	</div>
+		
+
 	
-	{% block content_css %}
-		<div id="content">
-			{% block content%}									
-					<p> inner-container </p>
-					{% block test %}
-					<div id="temp">	
-						<h1> yes </h1>
-					</div>
-					{% endblock %}
-					
-			{% endblock %}
-		</div>
-	{% endblock %}
-	
-	{% block aside_css %}
-		<div id="aside">	
-			{% block aside %}			
-					<p> aside </p>			
-			{% endblock %}
-		</div>
-	{% endblock %}
-	
-	{% block footer_css %}
-		<div id="footer">
-			{% block footer %}
-				 <!-- Copyright -->
-				  <div class=" footer-copyright">© 2020 Copyright:
-					<a href="#"> vudproject.com</a>
-				  </div>
-			{% endblock %}
-		</div>
-	{% endblock %}
+
+	<footer>
+		{% block footer %}
+			 <!-- Copyright -->
+			  <div class=" footer-copyright">© 2020 Copyright:
+				<a href="#"> vudproject.com</a>
+			  </div>
+		{% endblock %}
+	</footer>
 
 </div>
 {% endblock %}

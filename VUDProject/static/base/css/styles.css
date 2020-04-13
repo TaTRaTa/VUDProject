@@ -6,45 +6,67 @@ body{
 	box-sizing: border-box;
 }
 
-.clr {
-	clear: both;
-}
-
-.nav-bckgrnd {
-	
-	opacity:0.5;
-	grid-row: 1 / span 2;
-	grid-column: 1 / last-line;
+header {
+	display:flex;
+	flex_direction : row;
+	opacity:0.65;
 	background-color: white;
+	width: 100%;
+	height: 12vh;
+	justify-content: space-around;
+	align-items: center;
 	
 }
 
-.nav{
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: 1fr; 
-	grid-row: 1 / span 2;
-	grid-column: 2 / span 6;
-	list-style: none; 
-	z-index:1;
-	overflow: ;
-	justify-self: stretch;
+header a h4 {
+	font-size: 5vh;
+	margin-top: 0;
+    margin-bottom: 0;
+}
 
+header .header_logo {
+	//border : 1px solid;
+	//background-color: white;
+	//border-radius: 40%;
+	opacity:1;
+	text-align: center;
+	font-size: 0.3em;
+	color: #bb1a25;
+	z-index:2;
+	order :1;
 
 }
-.nav a {
+
+header nav{
+	order: 2;
+}
+
+header ul {
+	list-style: none; 
+	margin: 0;
+	padding:0;
+    
+}
+
+header li {
+	display:inline-block;
+	
+}
+
+header a {
+	
 	border-radius: 15%;
 	color: #f2f2f2;
 	text-align: center;
 	text-decoration: none;
-	font-size: 1em;	
+	font-size: 3.2vh;	
 	padding : 0.5em 0.8em;
-	place-self: center;
 	background-color: #bb1a25;
-	opacity:0.7;
+	opacity:1;
+	cursor:pointer;
 }
 
-.nav a:hover {
+header a:hover {
 	
 	border-radius: 15%;
 	color: #bb1a25;
@@ -58,28 +80,33 @@ body{
 	box-shadow: 0 0 15px 5px rgba(0,0,0,0.75);
 }
 
-.brand-logo{
-	display:none;
-	grid-row: 1 / span 2;
-	grid-column: 1 / span 1;
-	border: 1px solid;
-	z-index:1;
-}
-
-.nav-right-side {
-	grid-row: 1 / span 2;
-	grid-column: 10 / span 2;
-	background-color: white;
-	z-index:1;
-	border-radius: 40%;
-	opacity:0.7;
+header .header_login a{
+	border-radius: 15%;
+	color: white;
 	text-align: center;
-	font-size: 25.5vw;
-	color: #bb1a25;
+	text-decoration: none;
+	font-size: 1em;	
+	padding : 0.5em 0.8em;
+	place-self: center;
+	background-color: #483D8B;
+	opacity:1;
+} 
 
+
+footer{
+	width: 100%;
+	min-height: 30vh;
+	background-color: black;
+	color: white;	
+	text-align: center;
+	opacity:0.8;
 }
 
-#general-container {
+.clr {
+	clear: both;
+}
+
+.bckgrnd {
 	position: relative;
 	background-image: url(../images/blood-drop/blood_01.jpg);
 	background-color: tomato;
@@ -87,63 +114,83 @@ body{
 	background-size: cover;
 	background-position: center;
 	width: 100%;
-    height: 100vh;
-	display : grid;
-	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: 2% 10% 5% repeat(5, 1fr) 5% 5%;
+    height: 130vh;
 }
 
-#top-banner {
-	display : none;
-	grid-row: 1 / span 1;
-	grid-column: 1 / last-line;
-	background-color: yellow;
+.header_login {
+	order: 3;
 }
 
-#head-banner {
-	display : none;
-	grid-row: 3 / span 1;
-	grid-column: 1 / last-line;
-	background-color: yellow;
+.main_container {
+	display:block;
+	width: 100%;
+	min-height: 88vh;
+	z-index :1;
 }
 
-#content{
+.wrapper {
+	width : 65%;
+	margin : 0;
+}
+
+.short_wrapper {
+	width : 20%;
+	margin : 0;
+}
+
+.long_wrapper {
+	width : 85%;
+	margin : 0;
+}
+
+.notes {
+	display:block;
+	position : relative;
+	background-color: white;
+	opacity:0.7;
+	box-shadow: 12px 12px 24px 2px rgba(0,0,0,0.75);
+	text-align: center;
+	min-height:10vh;
+	top : 2vh;
+	left: 5%;
+	z-index:2;
+	padding: 2vh;
+	border-radius: 10% / 90%;
+}
+
+.white_wrapper{
+	display:inline-block;	
 	position : relative;
 	background-color: white;
 	opacity:0.7;
 	box-shadow: 12px 12px 24px 2px rgba(0,0,0,0.75);
 	color:#8C1500;
 	text-align: center;
-	grid-row: 4 / span 5;
-	grid-column: 2 / span 6;
+	min-height:53vh;
+	float:left;
+	top : 7vh;
+	left: 5%;
+	z-index:2;
+	padding: 2vh;
+	overflow:auto;
 }
 
-#aside{
+.blue_wrapper{
+	display:inline-block;
+	position : relative;
 	color:#8C1500;
 	text-align: center;
 	opacity:0.5;
-	grid-row: 4 / span 4;
-	grid-column: 9 / span 3;
 	background-color: #007bff;
 	box-shadow: 12px 12px 24px 1px rgba(0,0,0,0.75);
+	min-height: 40vh;
+	top : 7vh;
+	left: 10%;
+	z-index:2;
 }
 
-#footer{
 
-	bottom:0.05em;
-	background-color: black;
-	color: white;	
-	text-align: center;
-	opacity:0.8;
-	grid-row: 10 / span 1;
-	grid-column: 1 / last-line;
-}
 
-#temp{
-	height :80%;
-	background-color: tomato;
-
-}
 
 @media screen and (max-width: 770px) {
 	
