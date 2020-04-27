@@ -14,4 +14,23 @@ class HomeView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return HelpRequests.objects.all()[:10].values('created_by__username', 'created_at', 'city__name', 'title', 'expected_ppl_cnt', 'confirmed_ppl_cnt', 'onhold_ppl_cnt', 'valid_days', 'isopen')
+        return HelpRequests.objects.all()[:10].values('pk', 'created_by__username', 'created_at', 'city__name', 'title', 'expected_ppl_cnt', 'confirmed_ppl_cnt', 'onhold_ppl_cnt', 'valid_days', 'isopen')
+
+class DetailView(generic.DetailView):
+
+    model = HelpRequestsDetail
+    template_name = 'vud/detail.html'
+
+class EditView(generic.UpdateView):
+
+    model = HelpRequestsDetail
+
+    fields = [
+        'description',
+        'phone',
+        'Facebook',
+        'instagram',
+        'email',   
+    ]
+
+    template_name = 'vud/edit.html'

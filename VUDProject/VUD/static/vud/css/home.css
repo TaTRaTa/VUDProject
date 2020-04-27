@@ -1,7 +1,18 @@
 table {
   font-family: Verdana;
-  font-size: 1.2vw;
+  font-size: 1vw;
   border-collapse: collapse;
+  text-align:center;
+}
+
+td a {	
+    text-decoration:none;
+	color: inherit;
+}
+
+td a:hover {
+    text-decoration: none;
+	color: inherit;
 }
 
 td, th {
@@ -11,7 +22,10 @@ td, th {
 }
 
 th {
-  background-color: #333;
+  background-color: #bb1a25;
   color: white;
 }
 
+.scrl{
+	overflow:auto;
+}

@@ -1,0 +1,40 @@
+
+<div class="wrapper white_wrapper">
+	
+	
+	{% if reqs %}	
+		<table class="table table-hover">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">city</th>
+			  <th scope="col">title</th>
+			  <th scope="col">created_by</th>
+			  <th scope="col">created_at</th>
+			  <th scope="col">valid_days</th>
+			  <th scope="col">isopen</th>
+			  <th scope="col"></th>
+			  <th scope="col"></th>
+			</tr>
+		  </thead>
+		  <tbody>
+	{% for item in reqs %}
+			<tr>
+			  <td scope="row"><a href="{% url 'vud:detail' item.pk %}">{{ forloop.counter }}</a></td>
+			  <td><a href="{% url 'vud:detail' item.pk %}">{{ item.city__name }}</a></td>
+			  <td><a href="{% url 'vud:detail' item.pk %}">{{ item.title }}</a></td>
+			  <td><a href="{% url 'vud:detail' item.pk %}">{{ item.created_by__username }}</a></td>
+			  <td><a href="{% url 'vud:detail' item.pk %}">{{ item.created_at|date }}</a></td>
+			  <td><a href="{% url 'vud:detail' item.pk %}">{{ item.valid_days }}</a></td>
+			  <td><a href="{% url 'vud:detail' item.pk %}">{{ item.isopen }}</a></td>
+			  <td><button type="button" class="btn btn-outline-success btn-sm">ready for help</button></td>
+			  <td><button type="button" class="btn btn-outline-warning btn-sm" onclick="window.location.href='{% url 'vud:edit' item.pk %}'">edit</button></td>
+			</tr>
+	{% endfor %}
+		  </tbody>
+		</table>
+		
+	{% else %}
+		<p>No request are available.</p>
+	{% endif %}
+	</div>
