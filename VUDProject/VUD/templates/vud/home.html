@@ -18,6 +18,9 @@
 
 	<div class="short_wrapper blue_wrapper">
 		login
+		<p>{{ request.user.is_authenticated }}    </p>
+		<p>{{ request.user }}                     </p>
+		<p>{{ model.created_by }}                 </p>
 	</div> 
 
 	

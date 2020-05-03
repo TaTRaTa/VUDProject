@@ -1,0 +1,14 @@
+
+td , table > thead > tr > th {
+    color: #8C1500;
+}
+
+.scrl{
+	overflow:auto;
+}
+
+.table_wrapper {
+	
+	width : 70%;
+	margin: 0 auto;
+}
