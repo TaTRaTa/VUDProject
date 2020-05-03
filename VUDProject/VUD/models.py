@@ -35,7 +35,7 @@ class Status(models.Model):
 class HelpRequests(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='topics')
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     city = models.ForeignKey(Cities, on_delete=models.CASCADE, related_name='topics')
     title = models.SlugField()
     expected_ppl_cnt = models.PositiveSmallIntegerField(default=0)
@@ -48,8 +48,8 @@ class HelpRequests(models.Model):
     class Meta:
         verbose_name_plural = "HelpRequests"
 
-    def __str__(self):
-        return self.title
+    # def __str__(self):
+    #     return self.title
 
 class HelpRequestsDetail(models.Model):
     postid = models.OneToOneField(HelpRequests, on_delete=models.CASCADE, primary_key=True, related_name='detail')
@@ -63,14 +63,14 @@ class HelpRequestsDetail(models.Model):
     class Meta:
         verbose_name_plural = "HelpRequestsDetail"
 
-    def __str__(self):
-        return self.description
+    # def __str__(self):
+    #     return self.description
 
 class HelpResponces(models.Model):
     topic = models.ForeignKey(HelpRequests, on_delete=models.CASCADE, related_name='replies')
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='replies')
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     isValid = models.BooleanField(default=True)
     status = models.ForeignKey(Status, on_delete=models.CASCADE, related_name='replies')
     

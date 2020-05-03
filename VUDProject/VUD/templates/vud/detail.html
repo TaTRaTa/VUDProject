@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_head_css %}
-		<link rel="stylesheet" type="text/css" href="{% static 'vud/css/home.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'vud/css/detail.css' %}">
 {% endblock %}
 	
 {% block content %}
@@ -13,14 +13,98 @@
 	
 	<div class="clr"></div>
 	
-	<div class="wrapper white_wrapper">
-		detail
-	</div>
-	
+	<div class="long_wrapper white_wrapper">
+		<div>
+			{% if request.user == model.created_by %}
+				<button type="button" class="btn btn-outline-warning btn-sm" onclick="window.location.href='{% url 'vud:edit' pk %}'">edit</button>
+			{% endif %}
 
-	<div class="short_wrapper blue_wrapper">
-		login
-	</div> 
+			<button type="button" class="btn btn-danger btn-sm">ready for help</button>
+		</div>
+		<p></p>
+		<div>
+			<div class="table_wrapper">
+				<div class="table-responsive">
+				  <table class="table">
+					 <thead>
+						<tr>
+						  <th colspan="2">{{ model.title }}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="col">created_by</th>
+							<td scope="col" >{{ model.created_by }}</td>
+						</tr>
+						<tr>
+							<th scope="col">city</th>
+							<td scope="col" >{{ model.city }}</td>
+						</tr>
+						<tr>
+							<th scope="col">description</th>
+							<td scope="col" >{{ model_det.description }}</td>
+						</tr>
+						<tr>
+							<th scope="col">confirmed/expected</th>
+							<td scope="col" >{{ model.confirmed_ppl_cnt }}/{{ model.expected_ppl_cnt }}</td>
+						</tr>
+						<tr>
+							<th colspan="2">additional contact information</th>
+						</tr>
+						<tr>
+							<th scope="col">clinic</th>
+							<td scope="col" >{{ model_det.clinics }}</td>
+						</tr>
+						<tr>
+							<th scope="col">phone</th>
+							<td scope="col" >{{ model_det.phone }}</td>
+						</tr>
+						<tr>
+							<th scope="col">email</th>
+							<td scope="col" >{{ model_det.email }}</td>
+						</tr>
+						<tr>
+							<th scope="col">Facebook</th>
+							<td scope="col" >{{ model_det.Facebook }}</td>
+						</tr>
+						<tr>
+							<th scope="col">instagram</th>
+							<td scope="col" >{{ model_det.instagram }}</td>
+						</tr>
+						{% if request.user == model.created_by %}
+						<tr>
+							<th scope="col">remaining days {{ model.valid_days }}</th>
+							<td scope="col" > 
+								<form action="{% url 'vud:isopen_req' pk %}" method="post"> {% csrf_token %}
+									<button type="submit" class="btn btn-secondary btn-sm ">
+									{% if model.isopen %}
+										close event
+									{% else %}
+										open event
+									{% endif %}
+									</button>
+								</form>
+							</td>
+						</tr>
+						{% else %}
+					    <tr>
+							<th scope="col">remaining days </th>
+							<td scope="col" > {{ model.valid_days }}</td>
+						</tr>
+						{% endif %}
+					</tbody>
+				  </table>
+				</div>
+
+			</div>
+			<div>
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="window.location.href='{% url 'vud:home' %}'">Go back</button>
+			</div>
+		</div>
+		
+		
+	</div>
+
 
 	
 	<div class="clr"></div>

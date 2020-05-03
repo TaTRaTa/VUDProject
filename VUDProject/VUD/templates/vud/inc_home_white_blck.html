@@ -27,8 +27,7 @@
 			  <td><a href="{% url 'vud:detail' item.pk %}">{{ item.created_at|date }}</a></td>
 			  <td><a href="{% url 'vud:detail' item.pk %}">{{ item.valid_days }}</a></td>
 			  <td><a href="{% url 'vud:detail' item.pk %}">{{ item.isopen }}</a></td>
-			  <td><button type="button" class="btn btn-outline-success btn-sm">ready for help</button></td>
-			  <td><button type="button" class="btn btn-outline-warning btn-sm" onclick="window.location.href='{% url 'vud:edit' item.pk %}'">edit</button></td>
+			  <td><button type="button" class="btn btn-outline-success btn-sm">ready for help</button></td>		  
 			</tr>
 	{% endfor %}
 		  </tbody>
@@ -36,5 +35,6 @@
 		
 	{% else %}
 		<p>No request are available.</p>
+		
 	{% endif %}
 	</div>

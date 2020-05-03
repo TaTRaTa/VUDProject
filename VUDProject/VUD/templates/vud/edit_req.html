@@ -1,0 +1,36 @@
+{% extends '../cstm_base.html' %} 
+{% load static %}
+
+{% block extra_head_css %}
+		<link rel="stylesheet" type="text/css" href="{% static 'vud/css/home.css' %}">
+{% endblock %}
+	
+{% block content %}
+
+	{% if error_message %}
+	<div class="wrapper notes"> messgages <p><strong>{{ error_message }}</strong></p> </div>
+	{% endif %}
+	
+	<div class="clr"></div>
+	
+	<div class="long_wrapper white_wrapper">
+		<div>
+			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="history.back()">Go back</button>
+		</div>
+		
+		<div>
+			<form action="{% url 'vud:edit' pk %}" method="POST" id="upd_form"> {% csrf_token %}
+				{{ form.as_p }}
+				{{ form2.as_p }}
+			</form>	
+		</div>
+		
+		<button type="submit" form="upd_form" class="btn btn-outline-success btn-sm">
+			<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+			update
+		</button>
+	</div>
+		
+	<div class="clr"></div>
+	
+{% endblock %}
