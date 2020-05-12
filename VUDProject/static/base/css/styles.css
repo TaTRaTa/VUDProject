@@ -80,18 +80,6 @@ header a:hover {
 	box-shadow: 0 0 15px 5px rgba(0,0,0,0.75);
 }
 
-header .header_login a{
-	border-radius: 15%;
-	color: white;
-	text-align: center;
-	text-decoration: none;
-	font-size: 1em;	
-	padding : 0.5em 0.8em;
-	place-self: center;
-	background-color: #483D8B;
-	opacity:1;
-} 
-
 
 footer{
 	width: 100%;

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from .models import HelpRequests, HelpRequestsDetail, HelpResponces
-from .forms import ReqEditForm, ReqDetEditForm
+from .forms import ReqEditForm, ReqDetEditForm, ClinicForm, CityForm, RawCreateForm
 # Create your views here.
 
 def Home(request):
@@ -17,10 +17,53 @@ class HomeView(generic.ListView):
         """Return the last five published questions."""
         return HelpRequests.objects.all()[:10].values('pk', 'created_by__username', 'created_at', 'city__name', 'title', 'expected_ppl_cnt', 'confirmed_ppl_cnt', 'onhold_ppl_cnt', 'valid_days', 'isopen')
 
-class DetailView(generic.DetailView):
+def create_req_view(request, *args ,**kwargs):
+    print(request, args, kwargs)
+    template_name = 'vud/create_req.html'
 
-    model = HelpRequestsDetail
-    template_name = 'vud/detail.html'
+    # validate if user is not login then redirect into home page
+    if  not request.user.is_authenticated :
+        return HttpResponseRedirect(reverse('vud:home'))
+    
+    if request.method == "POST":
+        print(request, request.POST, request.user, request.user.id)
+        new_req = HelpRequests(created_by=request.user
+                                    , city_id=request.POST["city"]
+                                    , title=request.POST["title"]
+                                    , expected_ppl_cnt=request.POST["expected_ppl_cnt"]
+                                    , valid_days=request.POST["valid_days"]
+                                )
+        new_req.save()
+
+        if not request.POST["description"].strip() == ''\
+            or not request.POST["phone"].strip() == '' \
+            or not request.POST["Facebook"].strip() == '' \
+            or not request.POST["instagram"].strip() == '' \
+            or not request.POST["email"].strip() == '' \
+            or not request.POST["clinic"].strip() == '':
+                new_req_det = HelpRequestsDetail(postid=new_req
+                                                    , description = request.POST["description"]
+                                                    , phone = request.POST["phone"]
+                                                    , Facebook = request.POST["Facebook"]
+                                                    , instagram = request.POST["instagram"]
+                                                    , email = request.POST["email"]
+                                                    , clinics_id = request.POST["clinic"]
+                                                )
+                new_req_det.save()
+        return HttpResponseRedirect(reverse('vud:home'))
+
+
+    form_clinic = ClinicForm()
+    form_city = CityForm()
+    form_raw = RawCreateForm()
+
+    context = {
+        'form_city' : form_city,
+        'form_raw' : form_raw,
+        'form_clinic' : form_clinic,
+
+    }    
+    return render(request, template_name, context)
 
 def detail_req_view(request, **kwargs):
     print(request, kwargs)
