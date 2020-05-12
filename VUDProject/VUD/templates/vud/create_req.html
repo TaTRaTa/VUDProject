@@ -1,0 +1,50 @@
+{% extends '../cstm_base.html' %} 
+{% load static %}
+
+{% block extra_head_css %}
+		<link rel="stylesheet" type="text/css" href="{% static 'vud/css/detail.css' %}">
+{% endblock %}
+	
+{% block content %}
+
+	{% if error_message %}
+	<div class="wrapper notes"> messgages <p><strong>{{ error_message }}</strong></p> </div>
+	{% endif %}
+	
+	<div class="clr"></div>
+	
+	<div class="long_wrapper white_wrapper">
+		<div>
+			
+			
+			  <div class="card bg-light">
+				<div class="card-header"><h5>Create event</h5></div>
+					<form action="{% url 'vud:create_req' %}" method="POST" id="new_form"> {% csrf_token %}
+						<div class="card-body">
+						  {{ form_city.as_p }}
+						  {{ form_raw.as_p }}
+						  {{ form_clinic.as_p }}
+						</div>
+					</form>	
+					
+					<button type="submit" form="new_form" class="btn btn-outline-success btn-sm">
+						<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+						new event
+					</button>
+					
+			  </div>
+			  <div class="card bg-light">
+				<div class="card-header">Optional attributes</div>
+			  </div>
+			
+
+		</div>
+		
+		
+	</div>
+
+
+	
+	<div class="clr"></div>
+	
+{% endblock %}
