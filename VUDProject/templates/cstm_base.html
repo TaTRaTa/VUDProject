@@ -52,7 +52,11 @@
 		
 
 		{% block header_login%}
-			<div class="header_login"><a href="#login"> Login </a></div>
+			
+			<div class="header_login">
+				<button type="button" class="btn btn-light" onclick="window.location.href='{% url 'vud:create_req' %}'">create event</button>
+				<button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'vud:home' %}'">login</button>
+			</div>
 		{% endblock %}
 	</header>
 
