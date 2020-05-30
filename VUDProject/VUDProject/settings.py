@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'VUD.apps.VudConfig',
     'Tests.apps.TestsConfig',
+    'social_django',
 
 ]
 
@@ -127,3 +128,16 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "VUD", "static"),
     os.path.join(BASE_DIR, "Tests", "static"),
  ]
+
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.instagram.InstagramOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
