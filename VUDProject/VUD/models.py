@@ -57,6 +57,7 @@ class HelpRequestsDetail(models.Model):
     phone = models.CharField(max_length=20, null=True)
     Facebook = models.URLField(null=True)
     instagram = models.URLField(null=True)
+    linkedin = models.URLField(null=True)
     email = models.URLField(null=True)
     clinics = models.ForeignKey(Clinics, null=True, blank=True, on_delete=models.CASCADE, related_name='topics')
     

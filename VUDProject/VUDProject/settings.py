@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'VUD.apps.VudConfig',
     'Tests.apps.TestsConfig',
+    'Accounts.apps.AccountsConfig',
 
 ]
 
