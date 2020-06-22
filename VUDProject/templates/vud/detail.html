@@ -71,6 +71,10 @@
 							<th scope="col">instagram</th>
 							<td scope="col" >{{ model_det.instagram }}</td>
 						</tr>
+						<tr>
+							<th scope="col">linkedin</th>
+							<td scope="col" >{{ model_det.linkedin }}</td>
+						</tr>
 						{% if request.user == model.created_by %}
 						<tr>
 							<th scope="col">remaining days {{ model.valid_days }}</th>
