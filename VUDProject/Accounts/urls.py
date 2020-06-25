@@ -10,6 +10,7 @@ urlpatterns = [
     # path('needy/', views.Home , name="needy"),
     # path('base/', views.Home , name="base"),
     # path('home/', views.Home , name="home"),
+    path('register', views.register, name="register")
 
 
 ]
